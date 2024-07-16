@@ -2,9 +2,7 @@ import boto3
 class Config:
     aws_cre = {
         'service_name' : 's3',
-        'region_name' : 'ap-southeast-2',
-        'aws_access_key_id' : 'AKIAZI2LETRBIBQJGKWT',
-        'aws_secret_access_key' : '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'
+        'region_name' : 'ap-southeast-2'
     }
     
     snow_cre = {
