@@ -12,7 +12,9 @@ from utils.help import Help
 def extract_fn():
     
     s3 =  Help.boto3_connect()
-    # sf = Help.snowflake_connect()
+    print(s3)
+    sf = Help.snowflake_connect()
+    print(sf)
 
     
     
