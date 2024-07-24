@@ -1,6 +1,8 @@
 import boto3
 from config.config import Config
 import snowflake.connector as sf
+import psycopg2
+
 
 
 class Help:
@@ -10,13 +12,15 @@ class Help:
         aws_access_key_id = Config.aws_cre['aws_access_key_id']
         aws_secret_access_key = Config.aws_cre['aws_secret_access_key']
         
-        s3 = boto3.resource(
+        s3 = boto3.client(
             service_name=service_name,
             region_name=region_name,
             aws_access_key_id=aws_access_key_id,
             aws_secret_access_key =aws_secret_access_key
             )
+        
         return s3
+
         
     def snowflake_connect():
         user = Config.snow_cre['user']
@@ -38,6 +42,28 @@ class Help:
             )
         
         return sf_connect
+    
+
+    def postgre_connect():
+        user = Config.postgre_cre['username']
+        host = Config.postgre_cre['hostname']
+        dbname = Config.postgre_cre['database']
+        pwd = Config.postgre_cre['pwd']
+        port = Config.postgre_cre['port_id']
+        
+        py_connect = psycopg2.connect(
+            user=user,
+            host=host,
+            dbname=dbname,
+            password=pwd,
+            port=port
+        )
+        
+        return py_connect
+        
+        
+        
+        
         
         
            
